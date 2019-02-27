@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="16.png">
+    <link rel="mask-icon" href="myIcons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="16.png">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+    ::-webkit-scrollbar {
+        width: 10px;
+
+
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: rgba(68, 4, 87, 0.32);
+        border-radius: 10px;
+        box-shadow: inset 0 0 5px grey;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #ffffff;
+        border-radius: 8px;
+
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #777777;
+
+    }
+
+    ::-webkit-scrollbar-button {
+        width: 18px;
+        color: #ff0000;
+    }
+
+    body,
+    html {
+        background-color: #1c1a1a;
+        height: 100%;
+        margin: 0;
+    }
+
+    #liste img {
+        height: auto;
+        border-radius: 50%;
+        width: 100%;
+    }
+
+    #liste {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin: auto 50px;
+
+
+    }
+
+    @media only screen and (min-width: 768px) {
+        #liste {
+            grid-template-columns: 1fr 1fr;
+            margin: auto 50px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        #liste {
+            grid-template-columns: 1fr 1fr 1fr;
+            margin: auto 50px;
+        }
+    }
+
+    nav {
+        text-align: center;
+        margin: 30px;
+    }
+
+    .valgt {
+        background-color: #626262;
+    }
+
+    h1 {
+        font-family: 'Staatliches';
+        color: #ffffff;
+        text-align: center;
+        margin-left: 30px;
+        margin-top: -10vw;
+    }
+
+
+    .ret {
+        color: white;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 10px;
+        margin: 30px;
+        padding: 50px;
+        cursor: pointer;
+    }
+
+    h2 {
+        font-family: 'Staatliches';
+        text-align: center;
+
+    }
+
+    button:hover {
+        background-color: #520b84;
+    }
+
+    button {
+        font-family: 'Staatliches';
+        background-color: #333333;
+        border: none;
+        color: white;
+        border-radius: 20px;
+        margin: 5px;
+        padding: 20px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #popup img {
+        border-radius: 50%;
+    }
+
+    #popup p {
+        font-size: 1.5em;
+        color: white;
+    }
+
+    #popup h2 {
+        font-size: 2em;
+        color: white;
+    }
+
+    #popup {
+
+        top: 0;
+        width: 100vw;
+        height: 100%;
+        position: fixed;
+        background-color: hsla(275, 87%, 16%, 0.82);
+        display: none;
+        overflow: scroll;
+    }
+
+    #indhold {
+
+        height: 50vh;
+        width: 70vw;
+
+        margin: 4rem auto;
+    }
+
+    #luk {
+
+        position: fixed;
+        right: 2rem;
+    }
+
+    #luk button {
+
+        background-color: #ff0000;
+        margin-top: 20px;
+        border-radius: 50%;
+        font-size: 2rem;
+        padding: 1rem 2rem;
+        cursor: pointer;
+    }
+
+
+    .menu #mylinks {
+        display: none;
+    }
+
+
+    .menu a {
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        font-size: 20px;
+        display: block;
+        text-align: center;
+
+    }
+
+
+    .menu a.icon {
+        background: #0a0a0a;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+
+    .menu a:hover {
+        background-color: #ff0000;
+        color: white;
+    }
+
+    .menu .active {
+        background-color: #333333;
+        color: white;
+
+    }
+
+    .menu .active:hover {
+        background-color: #797878;
+        color: white;
+    }
+
+    .menu a.icon:hover {
+        background-color: #ff0000;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .menu {
+        font-family: 'Staatliches';
+        overflow: hidden;
+        background-color: #676767;
+        position: relative;
+        width: 98vw;
+        top: 0vw;
+        opacity: 0.8;
+        z-index: 10;
+
+    }
+
+    .menu a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        display: block;
+        text-align: center;
+
+    }
+
+    .menu:hover {
+        cursor: pointer;
+        color: #ff0000;
+
+    }
+
+    .container {
+        position: absolute;
+        top: 0vw;
+
+        width: auto;
+    }
+
+    .splash_info {
+        position: absolute;
+        margin-top: -25vw;
+        height: 20vw;
+        width: 20vw;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.78);
+        border-radius: 50%;
+
+    }
+
+    .splash_info p {
+        margin-top: 50px;
+        font-size: 0.8em;
+        text-align: center;
+        color: white;
+    }
+
+    .splash_container {
+        position: relative;
+        top: -15vw;
+        left: 75vw;
+        height: auto;
+        width: auto;
+    }
+
+
+
+    .mySlides {
+
+        display: none;
+        position: relative;
+        top: -20vw;
+        margin-left: 20px;
+        width: 50%;
+    }
+
+
+    .text {
+        position: absolute;
+        font-family: 'Staatliches', bold;
+        color: #b2b2b2;
+        font-size: 20px;
+        padding: 8px 12px;
+        text-align: center;
+
+
+    }
+
+    .numbertext {
+        font-family: 'Staatliches', bold;
+        color: #ff0000;
+        position: absolute;
+        font-size: 20px;
+        padding: 8px 12px;
+        top: 0px;
+        left: 10px;
+    }
+
+    .active {
+        background-color: #ff0000;
+    }
+
+    .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+
+    @-webkit-keyframes fade {
+        from {
+            opacity: .4
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    .logo {
+        z-index: 20;
+        top: 5vw;
+        position: absolute;
+        width: 30vw;
+        height: 20vw;
+        background-color: red;
+        opacity: 0;
+    }
+
+    .sidebar_1 {
+        position: absolute;
+        background-position: center;
+        background-image: url(gold.jpg);
+        width: 80px;
+        height: 150vw;
+        margin-top: -20vw;
+    }
+
+    .sidebar_2 {
+        position: absolute;
+        background-position: center;
+        background-image: url(gold.jpg);
+        width: 80px;
+        height: 150vw;
+        margin-top: -20vw;
+        left: 93.5vw;
+
+    }
+
+    @media screen and (max-width: 768px) {
+        .slideshow_container {
+            position: absolute;
+            top: 0vw;
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 376px) {
+        .slideshow_container {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .splash_info {
+            position: absolute;
+            top: -100px;
+            width: 20vw;
+            height: 20vw;
+        }
+    }
+     @media screen and (max-width: 376px) {
+        .splash_info {
+        position: absolute;
+        width: 90vw;
+        height: 20vw;
+        border-radius: 10px;
+            margin-top: 50px;
+            margin-left: -272px;
+        }
+    }
+      @media screen and (max-width: 376px) {
+        .splash_info {
+        position: absolute;
+        width: 90vw;
+        height: 20vw;
+        border-radius: 10px;
+            margin-top: 50px;
+            margin-left: -272px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .splash_info p {
+            margin-top: 30px;
+        }
+    }
+
+    @media screen and (max-width: 376px) {
+        .splash_info p {
+            margin-top: 10px;
+            margin-left: -10px;
+        }
+    }
+
+ @media screen and (max-width: 376px) {
+        #luk button {
+         margin-top: 80px;
+            margin-left: -120px;
+        }
+    }
+       @media screen and (max-width: 769px) {
+        #luk button {
+         margin-top: 80px;
+
+        }
+    }
+    @media screen and (max-width: 376px) {
+        #liste img {
+            margin-left: -30px;
+            width: 50vw;
+            height: 50vw;
+        }
+    }
+
+    @media screen and (max-width: 376px) {
+        #popup img {
+             margin-left: -30px;
+            width: 50vw;
+            height: 50vw;
+        }
+    }
+       @media screen and (max-width: 769px) {
+        #popup img {
+             margin-left: -30px;
+            width: 50vw;
+            height: 50vw;
+        }
+    }
+       @media screen and (max-width: 769px) {
+        #popup p {
+            width: 100vw;
+            margin-left: -200px;
+        }
+    }
+   @media screen and (max-width: 769px) {
+        #popup h2 {
+            width: 100vw;
+            margin-left: -130px;
+
+     @media screen and (max-width: 376px) {
+        #popup p {
+            width: 100vw;
+            margin-left: -130px;
+        }
+    }
+   @media screen and (max-width: 376px) {
+        #popup h2 {
+            width: 100vw;
+            margin-left: -130px;
+        }
+    }
+       @media screen and (max-width: 376px) {
+        p {
+            width: 100vw;
+            margin-left: -130px;
+        }
+    }
+   @media screen and (max-width: 376px) {
+       h2 {
+            width: 100vw;
+            margin-left: -130px;
+        }
+    }
+    @media screen and (max-width: 376px) {
+       h1 {
+           margin-top: -100px;
+        }
+    }
+
+</style>
+
+<body>
+
+    <div class="splash">
+        <div class="bgimg">
+            <img src="garden_splash.png" style="width: 100%">
+        </div>
+        <a href="index.html">
+            <div class="logo"></div>
+        </a>
+        <div class="slideshow_container">
+
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 6</div>
+                <img src="1.jpg" alt="spicy chicken" style="width:50%">
+                <div class="text">Spicy chicken</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 6</div>
+                <img src="takeaway.jpg" alt="chinabox" style="width:50%">
+                <div class="text">Take away</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 6</div>
+                <img src="chinesetapas.jpg" alt="noodles" style="width:50%">
+                <div class="text">Chinese tapas</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 6</div>
+                <img src="noodle.jpg" alt="blah" style="width:50%">
+                <div class="text">Wok-noodles with springrolls</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">5 / 6</div>
+                <img src="beefbowl.jpg" alt="beef" style="width:50%">
+                <div class="text">Beef with rice</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">6 / 6</div>
+                <img src="shrimp.jpg" alt="shrimp" style="width:50%">
+                <div class="text">Noodle and shrimp bowl</div>
+            </div>
+
+            <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="splash_container">
+
+
+        <a href="index.html">
+            <div class="splash_info">
+                <p>Welcome to resturant Red Dragons.<br><br>
+                    Opening Hours: Mon-Sat 11:00 - 22:00 Sunday: Closed</p>
+
+            </div>
+        </a>
+    </div>
+
+
+    <nav1>
+        <div class="container">
+            <div class="menu" id="mymenu">
+                <a href="index.html" class="active">VELKOMMEN</a>
+                <div id="myLinks">
+                    <a href="index.html">HOME</a>
+                    <a href="menu2.html">MENU</a>
+                    <a href="contact.html">KONTAKT</a>
+                </div>
+
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+    </nav1>
+
+    <div id="popup">
+
+        <div id="luk">
+            <button>X</button>
+        </div>
+
+        <div id="indhold"></div>
+
+    </div>
+
+    <h1>Alle retter</h1>
+
+    <nav>
+
+        <button class="filter valgt" data-hold="alle">Alle retter</button>
+        <button class="filter" data-hold="forretter">Forretter</button>
+        <button class="filter" data-hold="hovedretter">Hovedretter</button>
+        <button class="filter" data-hold="desserter">Desserter</button>
+
+    </nav>
+
+
+    <section id="liste"></section>
+</body>
+
+<script>
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" .dot .active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 4000);
+    }
+
+    function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+
+    let alleRetter = [];
+    let filter = "alle";
+
+
+    document.addEventListener("DOMContentLoaded",
+        start);
+
+    function start() {
+        let dest = document.querySelector("#liste");
+        async function getJson() {
+            let jsonData = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1BJv2OZoIg_fBZQiMCVMXbQvWn90mbuk0Y_GyWv6xlN0");
+            alleRetter = await jsonData.json();
+            alleRetter.sort((a, b) => {
+                return (a.pris - b.pris);
+            });
+
+            visRetter();
+        }
+
+        function visRetter() {
+            dest.innerHTML = "";
+            alleRetter.forEach(ret => {
+                if (filter == "alle" || filter == ret.kategori) {
+                    let template =
+                        `<article class="ret">
+                                <img src="retter/${ret.billede}" alt="${ret.navn}">
+                                <h2>${ret.navn}</h2>
+                                <p>${ret.ingredienser}</p>
+                                <p>${ret.pris} kr. </p>
+                            </article>
+                        `;
+
+
+                    // Åben pop-up
+
+                    dest.insertAdjacentHTML("beforeend", template);
+                    dest.lastElementChild.addEventListener("click", visSingle);
+
+                    // Indholdet i pop-up vinduet
+
+                    function visSingle() {
+                        document.querySelector("#indhold").innerHTML =
+
+                            `<article class="ret">
+                                    <img src="retter/${ret.billede}" alt="${ret.navn}">
+                                    <h2>${ret.navn}</h2>
+                                    <p>${ret.ingredienser}</p>
+                                    <p>${ret.pris} kr. </p>
+                                </article>`;
+
+                        document.querySelector("#popup").style.display = "block";
+                        document.querySelector("#popup #luk").addEventListener("click", close);
+                    }
+
+                    function close() {
+                        document.querySelector("#popup").style.display = "none";
+                    }
+
+
+                }
+            })
+        }
+
+        getJson();
+
+        document.querySelectorAll(".filter").forEach(but => {
+            but.addEventListener("click", filtrering);
+        })
+
+        function filtrering() {
+            document.querySelectorAll(".filter").forEach(but => {
+                but.classList.remove("valgt");
+            });
+            this.classList.add("valgt");
+            document.querySelector("h1").textContent = this.textContent;
+            filter = this.getAttribute("data-hold");
+            visRetter();
+        }
+
+    }
+    window.onscroll = function() {
+        stickyFunction()
+    };
+
+    var header = document.getElementById("myMenu");
+    var sticky = header.offsetTop;
+
+    function stickyFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+
+</script>

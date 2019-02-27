@@ -1,0 +1,159 @@
+<!doctype html>
+<html class="no-js" lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Red Dragons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="Style.css">
+    <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="16.png">
+    <link rel="mask-icon" href="myIcons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="16.png">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header>
+
+            <div class="splash_info_index">
+                <p>Welcome to resturant Red Dragons.<br><br>
+                    Opening Hours: Mon-Sat 11:00 - 22:00 Sunday: Closed</p>
+
+            </div>
+
+            <div class="container">
+                <div class="topnav" id="mytopnav">
+                    <a href="index.html" class="active">VELKOMMEN</a>
+
+                    <div id="myLinks">
+                        <a href="index.html">HOME</a>
+                        <a href="menu2.html">MENU</a>
+                        <a href="contact.html">KONTAKT</a>
+                    </div>
+
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="bgimg">
+            <img src="garden_splash.png" style="width: 100%">
+        </div>
+    </header>
+
+   <h1>Welcome to resturant Red Dragons</h1>
+
+        <div class="forside">
+
+            <h2>About us</h2>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Habitant morbi tristique senectus et netus et malesuada fames ac. Nibh ipsum consequat nisl</p>
+
+        </div>
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 6</div>
+                <img src="1.jpg" alt="spicy chicken" style="width:100%">
+                <div class="text">Spicy chicken</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 6</div>
+                <img src="takeaway.jpg" alt="chinabox" style="width:100%">
+                <div class="text">Take away</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 6</div>
+                <img src="chinesetapas.jpg" alt="noodles" style="width:100%">
+                <div class="text">Chinese tapas</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 6</div>
+                <img src="noodle.jpg" alt="blah" style="width:100%">
+                <div class="text">Wok-noodles with springrolls</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">5 / 6</div>
+                <img src="beefbowl.jpg" alt="beef" style="width:100%">
+                <div class="text">Beef with rice</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">6 / 6</div>
+                <img src="shrimp.jpg" alt="shrimp" style="width:100%">
+                <div class="text">Noodle and shrimp bowl</div>
+            </div>
+
+            <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+        <br>
+
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" .dot .active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 4000);
+        }
+
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+        window.onscroll = function() {
+            stickyFunction()
+        };
+
+        var header = document.getElementById("mytopnav");
+        var sticky = header.offsetTop;
+
+        function stickyFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        }
+
+    </script>
+
+</body>
